@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class 按钮控制运动 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // 原有移动控制部分
     public int speed;
     private Vector3 initialPosition; // 存储初始位置
 
@@ -39,5 +39,22 @@ public class 按钮控制运动 : MonoBehaviour
     public void resetPosition()
     {
         transform.position = initialPosition;
+    }
+
+    // ====== 新增的旋转控制部分 ======
+    [Header("旋转设置")]
+    [Tooltip("旋转速度(度/秒)")]
+    public float rotationSpeed = 30f; // 默认旋转速度
+
+    // 向左旋转
+    public void RotateLeft()
+    {
+        transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
+    }
+
+    // 向右旋转
+    public void RotateRight()
+    {
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 }
